@@ -1,9 +1,9 @@
-CFLAGS = -g -03
+CFLAGS = -g -O3
 OBJS = uimain.o tokenizer.o history.o
 
 all: tokenize
 
-tokenize: $(OBJS):
+tokenize: $(OBJS)
   cc -o tokenize $(CFLAGS) $(OBJS)
 
 # file dependencies
