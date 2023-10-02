@@ -23,7 +23,7 @@ char *token_terminator(char *token);
 /* Counts the number of tokens in the string argument. */
 int count_tokens(char *str);
 
-/* Returns a fresly allocated new zero-terminated string 
+/* Returns a freshly allocated new zero-terminated string 
    containing <len> chars from <inStr> */
 char *copy_str(char *inStr, short len);
 
@@ -41,7 +41,7 @@ char **tokenize(char* str);
 /* Prints all tokens. */
 void print_tokens(char **tokens);
 
-/* Frees all tokens and the vector containing themx. */
+/* Frees all tokens and the vector containing them. */
 void free_tokens(char **tokens);
 
 #endif
