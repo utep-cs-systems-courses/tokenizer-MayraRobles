@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <history.h>
 
 List* init_history()
@@ -36,11 +37,20 @@ char *get_history(List *list, int id)
 
 void print_history(List *list)
 {
-  Item 
+  Item *tempRoot = list->root;
+  while (tempRoot != NULL) {
+    printf("id: %d, token: %s", tempRoot->id, tempRoot->str);
+    tempRoot = tempRoot->next;
+  }
 }
 
 void free_history(List *list)
 {
+  Item *tempRoot = list->root;
+  while (tempRoot != NULL) {
+    free(tempRoot->str);
+  }
+  free(list);
 }
 
 
