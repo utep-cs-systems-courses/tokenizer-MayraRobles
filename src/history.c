@@ -23,8 +23,8 @@ void add_history(List *list, char *str)
 
   // We are at the end of the list now
   tempRoot->next = malloc(sizeof(Item));
-  tempRoot->str = str;
-  tempRoot->id = newItemId;
+  tempRoot->next->str = str;
+  tempRoot->next->id = newItemId;
 }
 
 char *get_history(List *list, int id)
@@ -46,10 +46,11 @@ void print_history(List *list)
     printf("There is no history!");
   }
   else {
+    tempRoot = tempRoot->next;
     printf("Here is the history:\n");
     while (tempRoot != NULL) {
-    printf("id: %d, token: %s\n", tempRoot->id, tempRoot->str);
-    tempRoot = tempRoot->next;
+      printf("%d. %s\n", tempRoot->id, tempRoot->str);
+      tempRoot = tempRoot->next;
     }
   }
 }

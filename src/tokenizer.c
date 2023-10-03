@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <tokenizer.h>
+#include "tokenizer.h"
 
 int space_char(char c)
 {
@@ -9,7 +9,7 @@ int space_char(char c)
 
 int non_space_char(char c)
 {
-  return (c != '\t' && c != ' ' && c = '\0') ? 1 : 0; 
+  return (c != '\t' && c != ' ' && c != '\0') ? 1 : 0; 
 }
 
 char *token_start(char *str)
@@ -40,13 +40,14 @@ int count_tokens(char *str)
 
   char *tempPtr = token_start(str);
 
-  while(*tempPtr != NULL) {
+  while(tempPtr != NULL) {
     if(non_space_char(*(tempPtr))) {
       wordCount++;
     }
     tempPtr = token_terminator(tempPtr);
     tempPtr = token_start(tempPtr);
   }
+  return wordCount;
 }
 
 char *copy_str(char *inStr, short len)
@@ -59,13 +60,13 @@ char *copy_str(char *inStr, short len)
   }
   *(copyStr + i) = '\0';
   
-  return *copyStr;
+  return copyStr;
 }
 
-char **tokenize(char  *str)
+char **tokenize(char *str)
 {
   int numTokens = count_tokens(str);
-  char **tokens = (char **)malloc((numTokens + 1) * sizeof(char *));
+  char **tokens = malloc((numTokens + 1) * sizeof(char *));
   char *tempPtr = str;
 
   int i;
@@ -83,19 +84,20 @@ char **tokenize(char  *str)
 void print_tokens(char **tokens)
 {
   for(int i = 0; *(tokens + i) != 0; i++) {
+    printf("tokens[%d] = ", i);
     printf("%s\n", *(tokens + i));
   }
 }
 
 void free_tokens(char **tokens)
 {
-  for(int i = 0; *(tokens + i) != 0: i++) {
+  for(int i = 0; *(tokens + i) != 0; i++) {
     free(*(tokens + i));
   }
   free(tokens);
 }
 
-void get_token_length(*char tokenStart)
+int get_token_length(char *tokenStart)
 {
   int count = 0;
   char c, *tempPtr = tokenStart;
@@ -103,7 +105,6 @@ void get_token_length(*char tokenStart)
   while (non_space_char(c = *(tempPtr + count))  && c != '\0') {
     count++;
   }
-
   return count;
 }
 

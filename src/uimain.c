@@ -4,14 +4,13 @@
 #include "history.h"
 
 int main() {
-  List *history =  init_history();
+  List *history = init_history();
   
-  printf("-------------------------------------------------------------------------\n");
-  printf("\t\t\t\tWELCOME TO TOKENIZER!!\n");
-  printf("-------------------------------------------------------------------------\n\n");
+  printf("\n\t\t\tWELCOME TO TOKENIZER!!\n");
 
   while(1) {
-    printf("Hello! please pick one of the following options:\n");
+    printf("==========================  Main Menu ==========================\n");
+    printf("Please pick one of the following options:\n");
     printf("1. Input 'i' to input a sentence to tokenize\n");
     printf("2. Input 'h' to view all histories\n");
     printf("3. Input '!' followed by the number to recall a certain history item\n");
@@ -26,26 +25,28 @@ int main() {
         printf("Please enter a sentence(limit is 100 characters):\n>");
         char sentence [100];
 	fgets(sentence, 100, stdin);
-	printf("Your sentence was: %s", sentence);
+	printf("\nYour sentence was: %s", sentence);
 	char **tokens = tokenize(sentence);
 	print_tokens(tokens);
 	add_history(history, sentence);
+	print_history(history);
         break;
       case 'h':
 	print_history(history);
         break;
       case '!':
+        printf("\nHistory item ");
 	int historyItem = atoi(user_selection+1);
-        printf("You've decide to recall history item %d\n", historyItem);
+	printf("%d is: ", historyItem);
 	printf("%s", get_history(history, historyItem));
         break;
       case 'q':
-        printf("Goodbye!\n\n");
+        printf("\nGoodbye!\n\n");
         return 0;
       default:
 	printf("Invalid option. Try again");
 	break;
     }
-    printf("\n\n");
+    printf("\n");
   }
 }
