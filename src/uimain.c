@@ -1,12 +1,11 @@
-// This is a file for the UI of the program
 #include <stdio.h>
 #include <stdlib.h>
-#include <tokenizer.h>
-#include <history.h>
+#include "tokenizer.h"
+#include "history.h"
 
 int main() {
   printf("---------------------------------------------------\n");
-  prinft("               WELCOME TO TOKENIZER!!\n");
+  printf("               WELCOME TO TOKENIZER!!\n");
   printf("---------------------------------------------------\n\n");
 
   while(1) {
@@ -20,16 +19,21 @@ int main() {
     fgets(user_selection, 10, stdin);
     
     switch(user_selection[0]) {
-    case 'i':
-      printf("Please enter a sentence:\n>"); 
-      break;
-    case '!':
-      printf("You've decided to see history
-");
-      break;
-    case 'q':
-      printf("Goodbye!");
-      return 0;
+      case 'i':
+        printf("Please enter a sentence(limit is 100 characters):\n>");
+        char sentence [100];
+	fgets(sentence, 100, stdin);
+	printf("%s", *sentence);
+        break;
+      case '!':
+        printf("You've decided to see history");
+        break;
+      case 'q':
+        printf("Goodbye!");
+        return 0;
+      default:
+	printf("Invalid option. Try again");
+	break;
     }
     
   }
