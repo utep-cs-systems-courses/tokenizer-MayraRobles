@@ -1,0 +1,12 @@
+#include <history.h>
+
+List* init_history()
+{
+  List *list = (list *)malloc(sizeof(List));
+  list->root = (Item *) malloc(sizeof(Item));
+}
+
+void add_history(List *list, char *str)
+{
+  list
+}

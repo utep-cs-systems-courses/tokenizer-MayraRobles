@@ -23,10 +23,9 @@ void add_history(List *list, char *str)
 
   // We are at the end of the list now
   tempRoot->next = malloc(sizeof(Item));
-  tempRoot->next->str = str;
+  tempRoot->next->str = copy_str(str, get_str_length(str));
   tempRoot->next->id = newItemId;
 }
-
 char *get_history(List *list, int id)
 {
   Item *tempRoot = list->root;

@@ -44,4 +44,9 @@ void print_tokens(char **tokens);
 /* Frees all tokens and the vector containing them. */
 void free_tokens(char **tokens);
 
+/* Helper method I created to return the length of a token*/
+int get_token_length(char *tokenStart);
+
+/*Helper method I cerated to return the lenth of a string*/
+int get_str_length(char *str);
 #endif
